@@ -13,14 +13,16 @@ import Update from './Components/Update';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>
+    element: <App></App>,
+    loader:()=>fetch('http://localhost:5000/coffee')
   },{
     path:'addCoffee',
     element:<AddCoffee></AddCoffee>
   },
   {
-    path:'update',
-    element:<Update></Update>
+    path:'/update/:id',
+    element:<Update></Update>,
+    loader:({params})=>fetch(`http://localhost:5000/coffee/${params.id}`)
   }
 ]);
 
